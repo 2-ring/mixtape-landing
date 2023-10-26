@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/styles.css">
+    <title>mixtape</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="left-div">
+        <img src="static/mock-up.png" alt="Mock-up Image" class="mock-up-image">
+    </div>
+    <div class="right-div">
+        <div class="main-content">
+            <img src="static/logo-gray.png" alt="Logo" class="logo-image">
+            <div class="text-wrapper">
+                <h2 class="large-text">the app for<br>sharing music</h2>
+                <p>A musical one-stop shop: share new finds with friends,<br>curate your very own online musical identity, and check<br>out your friends weekly listening data!</p>
+                <h2 class="medium-text">launching globally in january</h2>
+            </div>
+            <div class="input-container">
+                <i class="email-icon fas fa-envelope"></i>
+                <input type="text" placeholder="Get notified!" class="rounded-textbox" id="emailInput">
+                <i class="send-icon fas fa-check"></i>
+                <i class="cross-icon fas fa-times"></i>
+            </div>
+        </div>
+        <div class="social-icons-container">
+            <img src="static/playstore.png" alt="Play Store" class="social-icon">
+            <img src="static/spotify.png" alt="Spotify" class="social-icon">
+            <img src="static/apple.png" alt="Apple" class="social-icon">
+        </div>
+    </div>
+
+    <script>
+        let typingTimer;
+        let doneTypingInterval = 500;
+
+        var iconElements = document.querySelectorAll(".send-icon");
+
+        iconElements[0].onclick = function() {
+            alert("Icon clicked!");
+            var email = $('#emailInput').val();
+
+            $.ajax({
+                type: 'POST',
+                url: '/save_email',
+                contentType: 'application/json;charset=UTF-8',
+                data: JSON.stringify({ 'email': email }),
+                success: function(response) {
+                    console.log(response);
+                    $('#emailInput').val('');
+                },
+                error: function(error) {
+                    console.error(error);
+                }
+            });
+        };
+
+        function validateEmail() {
+            let emailInput = document.getElementById('emailInput');
+            let emailValue = emailInput.value;
+            let isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue) && !/[<>]/.test(emailValue);
+
+            let sendIcon = document.querySelector('.send-icon');
+            let crossIcon = document.querySelector('.cross-icon');
+
+            sendIcon.style.opacity = isValid ? 1 : 0;
+            crossIcon.style.opacity = isValid ? 0 : 1;
+        }
+
+        document.getElementById('emailInput').addEventListener('input', function () {
+            clearTimeout(typingTimer);
+            typingTimer = setTimeout(validateEmail, doneTypingInterval);
+        });
+    </script>
+</body>
+</html>
