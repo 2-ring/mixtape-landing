@@ -1,0 +1,137 @@
+body {
+		margin: 0;
+		padding: 0;
+		display: flex;
+		height: 100vh;
+		background-color: #1D2428;
+		color: #fff;
+		width: 100vw;
+		overflow: hidden;
+}
+
+.left-div,
+.right-div {
+		flex: 1;
+		height: 100%;
+		box-sizing: border-box;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+}
+
+.left-div {
+		align-items: flex-end;
+}
+
+.right-div {
+		align-items: flex-start;
+		margin-left: 20px;
+		position: relative;
+}
+
+.mock-up-image {
+		max-height: 90%;
+		width: auto;
+}
+
+.logo-image {
+		max-width: 8em;
+		margin-bottom: 15px;
+}
+
+.text-wrapper {
+		max-width: 100%;
+}
+
+h2 {
+		margin: 0;
+		font-family: 'Poppins', sans-serif;
+		font-weight: 600;
+		letter-spacing: -1px;
+		line-height: 1;
+}
+
+.large-text {
+		font-size: 4em;
+}
+
+.medium-text {
+		margin-top: 40px;
+}
+
+p {
+		margin-top: 20px;
+		font-family: 'Roboto', sans-serif;
+		font-size: 1.2em;
+}
+
+.input-container {
+		position: relative;
+		width: 17em;
+}
+
+.rounded-textbox {
+		border: 2px solid #95a1ac;
+		background-color: transparent;
+		border-radius: 20px;
+		padding: 10px;
+		font-size: 16px;
+		margin-top: 15px;
+		color: white;
+		font-family: 'Roboto', sans-serif;
+		outline: none;
+		padding-left: 40px;
+		width: 100%;
+}
+
+.rounded-textbox::placeholder {
+		color: white;
+}
+
+.email-icon {
+		position: absolute;
+		left: 15px;
+		top: 50%;
+		color: #95a1ac;
+}
+
+.send-icon,
+.cross-icon {
+		position: absolute;
+		top: 50%;
+		right: 15px;
+}
+
+.send-icon {
+		color: #2ecc71;
+		opacity: 1;
+		cursor: pointer;
+}
+
+.cross-icon {
+		color: #e74c3c;
+		opacity: 0;
+}
+
+.right-div {
+		/* Remaining styles */
+}
+
+.main-content {
+		max-width: 100%;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+}
+
+.social-icons-container {
+		position: absolute;
+		display: flex;
+		left: 0;
+		bottom: 7%;
+}
+
+.social-icon {
+		max-width: 10%;
+		margin-right: 20px;
+}
